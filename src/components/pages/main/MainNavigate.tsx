@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useIsMobile } from '@/hooks';
 
 const NAV_ITEMS = [
-  { id: 1, label: '캘린더', link: '/calendar', icon: '/icons/calander.png' },
+  { id: 1, label: '캘린더', link: '/calendar', icon: '/icons/calendar.png' },
   {
     id: 2,
     label: '국내 공연',
