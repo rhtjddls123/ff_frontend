@@ -42,6 +42,10 @@ const Header = ({
     router.push(`/performances?title=${searchRef.current?.value}`);
   };
 
+  const handleDelete = () => {
+    if (searchRef.current) searchRef.current.value = '';
+  };
+
   if (!isMobile) {
     return null;
   }
@@ -116,11 +120,11 @@ const Header = ({
               </button>
 
               <SearchInput
-                type='text'
                 ref={searchRef}
                 placeholder='검색어를 입력하세요'
                 className='w-full grow bg-transparent text-16_M outline-none'
                 onSubmit={handleSubmit}
+                onDelete={handleDelete}
               />
             </motion.div>
           )}

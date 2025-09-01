@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ErrorBoundary, Suspense } from '@suspensive/react';
 import { SuspenseQuery } from '@suspensive/react-query';
 import { LogOutIcon, StarIcon } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Notification, SearchInput } from '@/components/common';
 import { GroupIcon, LikeIcon, UserIcon } from '@/components/icons';
 import LogoIcon from '@/components/icons/LogoIcon';
@@ -95,14 +95,26 @@ const GlobalNavigationBar = () => {
   const isMobile = useIsMobile();
   const searchRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const title = searchParams.get('title');
 
-  if (isMobile) {
-    return null;
-  }
+  const handleDelete = () => {
+    if (searchRef.current) searchRef.current.value = '';
+  };
 
   const handleSubmit = () => {
     router.push(`/performances?title=${searchRef.current?.value}`);
   };
+
+  useEffect(() => {
+    if (searchRef.current) {
+      searchRef.current.value = title || '';
+    }
+  }, [title]);
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <nav className='h-[70px] w-full'>
@@ -111,15 +123,13 @@ const GlobalNavigationBar = () => {
           <Link href={'/'}>
             <LogoIcon className='aspect-square size-9 shrink-0 cursor-pointer' />
           </Link>
-          {!isMobile && (
-            <SearchInput
-              type='text'
-              ref={searchRef}
-              placeholder='검색어를 입력하세요'
-              className='h-[32px] w-full grow bg-transparent text-16_M outline-none'
-              onSubmit={handleSubmit}
-            />
-          )}
+          <SearchInput
+            ref={searchRef}
+            placeholder='검색어를 입력하세요'
+            className='h-[32px] w-full grow bg-transparent text-16_M outline-none'
+            onSubmit={handleSubmit}
+            onDelete={handleDelete}
+          />
         </div>
         {isLoggedIn && <NavigationProfile />}
         {!isLoggedIn && (
