@@ -2,11 +2,11 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 
 interface LikeIconProps {
-  type: 'empty' | 'emptyWhite' | 'active';
+  type?: 'empty' | 'emptyWhite' | 'active';
   className?: string;
 }
 
-const LikeIcon = ({ type, className }: LikeIconProps) => {
+const LikeIcon = ({ type = 'empty', className }: LikeIconProps) => {
   if (type === 'empty') {
     return (
       <svg
