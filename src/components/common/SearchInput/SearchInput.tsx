@@ -19,7 +19,7 @@ const SearchInput = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className='flex w-full cursor-pointer items-center gap-2 rounded-[100px] bg-gray-25 px-3 py-1.5 focus-within:border focus-within:border-gray-700 focus:border focus:border-gray-700'
+      className='flex w-full items-center gap-2 rounded-[100px] bg-gray-25 px-3 py-1.5 focus-within:border focus-within:border-gray-700 focus:border focus:border-gray-700'
     >
       <button
         type='submit'

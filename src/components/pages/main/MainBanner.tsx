@@ -103,14 +103,15 @@ const MainBanner = () => {
               className='mr-3 h-full w-full overflow-hidden rounded-[8px] p-0'
             >
               <Link href={item.href}>
-                <Image
-                  priority
-                  src={item.src}
-                  alt={item.alt}
-                  width={750}
-                  height={375}
-                  className='h-full'
-                />
+                <div className='relative aspect-[2/1] max-h-[400px] bg-white sm:aspect-[3/1]'>
+                  <Image
+                    priority
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    className='h-full object-cover'
+                  />
+                </div>
               </Link>
             </CarouselItem>
           ))}

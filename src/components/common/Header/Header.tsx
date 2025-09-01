@@ -42,11 +42,13 @@ const Header = ({
     router.push(`/performances?title=${searchRef.current?.value}`);
   };
 
-  if (!isMobile) return null;
+  if (!isMobile) {
+    return null;
+  }
 
   return (
     <>
-      <header className='fixed top-0 left-0 z-50 flex h-11 w-full items-center justify-between bg-white px-5 py-3'>
+      <header className='fixed top-0 left-0 z-50 flex h-11 w-full items-center justify-between bg-white px-5 py-3 md:left-1/2 md:h-20 md:max-w-[1200px] md:-translate-x-1/2'>
         {!isSearchOpen && (
           <>
             <div
@@ -66,7 +68,7 @@ const Header = ({
                 !isLoggedIn && 'w-[81px] gap-[14px]'
               )}
             >
-              {hasSearch && (
+              {hasSearch && isMobile && (
                 <button
                   ref={iconRef}
                   onClick={() => setIsSearchOpen(true)}
@@ -79,9 +81,11 @@ const Header = ({
               {!isLoggedIn && (
                 <button
                   onClick={onLogin}
-                  className='flex h-[22px] w-[43px] cursor-pointer items-center justify-center rounded-[8px] bg-[#FFCCCF] px-1.5 py-1'
+                  className={
+                    'flex h-[22px] w-[43px] cursor-pointer items-center justify-center rounded-[8px] bg-[#FFCCCF] px-1.5 py-1 md:h-10 md:w-20 md:rounded-full'
+                  }
                 >
-                  <span className='flex h-[14px] items-center justify-center text-12_M whitespace-nowrap text-gray-950'>
+                  <span className='flex h-[14px] items-center justify-center text-12_M whitespace-nowrap text-gray-950 md:text-16_M'>
                     로그인
                   </span>
                 </button>
@@ -122,7 +126,7 @@ const Header = ({
           )}
         </AnimatePresence>
       </header>
-      <div className='h-11' />
+      <div className={'h-11'} />
     </>
   );
 };
