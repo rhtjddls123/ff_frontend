@@ -1,7 +1,11 @@
 'use client';
 import React, { useRef, useState, useCallback } from 'react';
-import Portal from '@/components/common/Portal';
 import { AltArrowUpIcon, DeleteIcon } from '@/components/icons';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 import { LocationLabels, LocationValues } from '@/constants';
 import { useClickOutside, useQueryParam } from '@/hooks/';
 import { cn } from '@/lib/utils';
@@ -23,6 +27,7 @@ const PerformancesLocationSelector = ({
   const selectorRef = useRef<HTMLDivElement>(null);
   const dropdownPortalRef = useRef<HTMLDivElement>(null);
   const buttonWrapperRef = useRef<HTMLDivElement>(null);
+  const popoverRef = useRef<HTMLButtonElement>(null);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -145,30 +150,25 @@ const PerformancesLocationSelector = ({
       className={cn('relative z-20 inline-block', className)}
     >
       <TriggerButton />
-      {isOpen && (
-        <Portal>
-          <div
-            ref={dropdownPortalRef}
-            className='fixed right-2 left-2 z-20 mx-auto flex max-w-[31rem] flex-col gap-4 overflow-hidden rounded-[12px] border border-gray-50 bg-white p-5 shadow-lg'
-            style={{
-              top: buttonWrapperRef.current
-                ? buttonWrapperRef.current.getBoundingClientRect().bottom
-                  + window.scrollY
-                  + 8
-                : 0,
-            }}
-          >
-            <div className='grid grid-cols-4 gap-3'>
-              {locationOptions.map((location) => (
-                <OptionButton
-                  key={location.value}
-                  location={location}
-                />
-              ))}
-            </div>
+      <Popover
+        open={isOpen}
+        onOpenChange={setIsOpen}
+      >
+        <PopoverTrigger
+          ref={popoverRef}
+          className='absolute h-[46px]'
+        />
+        <PopoverContent className='w-[calc(100vw-2rem)] max-w-[calc(32rem-2rem)] rounded-[12px] border-1 border-gray-50 bg-white p-5 shadow-lg'>
+          <div className='grid grid-cols-4 gap-3'>
+            {locationOptions.map((location) => (
+              <OptionButton
+                key={location.value}
+                location={location}
+              />
+            ))}
           </div>
-        </Portal>
-      )}
+        </PopoverContent>
+      </Popover>
     </div>
   );
 };
