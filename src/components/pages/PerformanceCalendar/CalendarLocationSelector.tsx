@@ -1,6 +1,11 @@
 'use client';
 import React, { useRef, useState, useCallback } from 'react';
 import { AltArrowUpIcon, DeleteIcon } from '@/components/icons';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 import { LocationLabels, LocationValues } from '@/constants';
 import { useClickOutside, useQueryParam } from '@/hooks/';
 import { cn } from '@/lib/utils';
@@ -20,10 +25,9 @@ const CalendarLocationSelector = ({
   className,
 }: PerformancesLocationSelectorProps) => {
   const selectorRef = useRef<HTMLDivElement>(null);
-  const buttonWrapperRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [buttonPosition, setButtonPosition] = useState({ top: 0 });
+  const popoverRef = useRef<HTMLButtonElement>(null);
 
   const { getQueryParam, setMultipleQueryParams } = useQueryParam();
   const selectedLocation = getQueryParam(queryKey) || '';
@@ -31,13 +35,8 @@ const CalendarLocationSelector = ({
   useClickOutside({ ref: selectorRef, onClose: () => setIsOpen(false) });
 
   const toggleSelector = () => {
-    if (!isOpen && buttonWrapperRef.current) {
-      const rect = buttonWrapperRef.current.getBoundingClientRect();
-      setButtonPosition({
-        top: rect.bottom + window.scrollY,
-      });
-    }
     setIsOpen((prev) => !prev);
+    popoverRef.current?.click();
   };
 
   const handleLocationSelect = useCallback(
@@ -79,7 +78,6 @@ const CalendarLocationSelector = ({
         'inline-flex cursor-pointer items-center justify-center gap-1 overflow-hidden rounded-[100px] border-1 border-gray-100 bg-white py-3 pr-4 pl-5 whitespace-nowrap transition-all select-none',
         (isOpen || selectedLocation) && 'border-gray-950 bg-gray-950 text-white'
       )}
-      ref={buttonWrapperRef}
     >
       <button
         aria-label='location selector open'
@@ -140,14 +138,15 @@ const CalendarLocationSelector = ({
       className={cn('relative z-20 inline-block', className)}
     >
       <TriggerButton />
-      {isOpen && (
-        <div
-          className='fixed z-20 inline-flex w-[calc(100vw-2rem)] max-w-[calc(32rem-2rem)] -translate-x-1/2 flex-col gap-4 overflow-hidden rounded-[12px] border-1 border-gray-50 bg-white p-5 shadow-lg'
-          style={{
-            top: `${buttonPosition.top + 8}px`,
-            left: '50%',
-          }}
-        >
+      <Popover
+        open={isOpen}
+        onOpenChange={setIsOpen}
+      >
+        <PopoverTrigger
+          ref={popoverRef}
+          className='absolute h-[46px]'
+        />
+        <PopoverContent className='w-[calc(100vw-2rem)] max-w-[calc(32rem-2rem)] rounded-[12px] border-1 border-gray-50 bg-white p-5 shadow-lg'>
           <div className='grid grid-cols-4 gap-3'>
             {locationOptions.map((location) => (
               <OptionButton
@@ -156,8 +155,8 @@ const CalendarLocationSelector = ({
               />
             ))}
           </div>
-        </div>
-      )}
+        </PopoverContent>
+      </Popover>
     </div>
   );
 };
