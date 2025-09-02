@@ -26,7 +26,7 @@ const ProfileBody = ({ profile }: ProfileBodyProps) => {
 
   return (
     <section className='flex flex-col items-center rounded-xl bg-white'>
-      <div className='w-full max-w-xl'>
+      <div className='w-full max-w-[1200px]'>
         <div>
           <Tabs
             tabs={TABS}

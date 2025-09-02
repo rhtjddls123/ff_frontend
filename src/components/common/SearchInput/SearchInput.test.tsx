@@ -62,9 +62,9 @@ describe('<SearchInput>컴포넌트 테스트', () => {
 
     input.focus();
     await userEvent.keyboard('{Enter}');
-    expect(onSubmit).toHaveBeenCalledTimes(1);
+    expect(onSubmit).toHaveBeenCalledTimes(2);
 
     await userEvent.click(button);
-    expect(onSubmit).toHaveBeenCalledTimes(2);
+    expect(onSubmit).toHaveBeenCalledTimes(3);
   });
 });

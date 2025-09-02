@@ -14,3 +14,8 @@ export const useMyProfile = () =>
       return failureCount < 2;
     },
   });
+
+export const getMyProfileQueryOptions = () => ({
+  queryKey: [USERS_QUERY_KEYS.myProfile],
+  queryFn: () => profilesApi.getProfile('me'),
+});

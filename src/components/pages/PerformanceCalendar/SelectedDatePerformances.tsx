@@ -30,14 +30,14 @@ const SelectedDatePerformances = ({ date, performances }: Props) => {
           height='5vh'
         />
       ) : filtered.length === 1 ? (
-        <div className='flex justify-center'>
+        <div className='flex justify-start'>
           <PerformanceCard
             performance={filtered[0]}
             ranking={1}
           />
         </div>
       ) : (
-        <ul className='mx-auto grid w-full max-w-md grid-cols-2 justify-items-center gap-x-4 gap-y-7'>
+        <ul className='mx-auto grid w-full max-w-5xl grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-x-4 gap-y-7'>
           {filtered.map((perf, index) => (
             <PerformanceCard
               key={perf.id}

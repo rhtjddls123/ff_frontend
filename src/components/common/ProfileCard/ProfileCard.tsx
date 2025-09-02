@@ -12,9 +12,14 @@ import ProfileImage from '../ProfileImage/ProfileImage';
 
 interface ProfileCardProps {
   profile: ProfileCardType;
+  me?: boolean;
   onEditClick?: () => void;
 }
-const ProfileCard = ({ profile, onEditClick }: ProfileCardProps) => {
+const ProfileCard = ({
+  profile,
+  me = false,
+  onEditClick,
+}: ProfileCardProps) => {
   const [isLiked, setIsLiked] = useState(profile.isLiked);
 
   const genderLabel =
@@ -39,7 +44,7 @@ const ProfileCard = ({ profile, onEditClick }: ProfileCardProps) => {
   return (
     <div className='flex w-full items-center gap-[10px]'>
       <Link
-        href={`/profiles/${profile.id}`}
+        href={`/profiles/${me ? 'me' : profile.id}`}
         className='shrink-0'
       >
         <ProfileImage
@@ -51,7 +56,7 @@ const ProfileCard = ({ profile, onEditClick }: ProfileCardProps) => {
       <div className='flex w-full flex-col gap-[8px]'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-[5px]'>
-            <Link href={`/profiles/${profile.id}`}>
+            <Link href={`/profiles/${me ? 'me' : profile.id}`}>
               <span className='text-16_B text-gray-950 hover:underline'>
                 {profile.name}
               </span>

@@ -40,7 +40,7 @@ const ProfileHeader = ({ profile, onEditClick }: ProfileHeaderProps) => {
 
   return (
     <section className='flex flex-col items-center'>
-      <div className='mb-[10px] w-full max-w-xl'>
+      <div className='mb-[10px] w-full max-w-[1200px]'>
         {isNotFound ? (
           <ProfileNotFoundInfoBox />
         ) : (
@@ -57,7 +57,7 @@ const ProfileHeader = ({ profile, onEditClick }: ProfileHeaderProps) => {
           message='탈퇴했거나 존재하지 않는 사용자입니다.'
         />
       ) : (
-        <div className='w-full max-w-xl text-14_body_M whitespace-pre-wrap text-gray-950'>
+        <div className='w-full max-w-[1200px] text-14_body_M whitespace-pre-wrap text-gray-950'>
           {description?.trim() || (
             <div className='text-gray-300'>
               이 사용자는 아직 자기소개를 작성하지 않았어요.
@@ -67,7 +67,7 @@ const ProfileHeader = ({ profile, onEditClick }: ProfileHeaderProps) => {
       )}
 
       {sns?.trim() && (
-        <div className='mt-2 w-full max-w-xl text-14_M text-gray-950'>
+        <div className='mt-2 w-full max-w-[1200px] text-14_M text-gray-950'>
           <a
             href={`https://instagram.com/${sns}`}
             target='_blank'

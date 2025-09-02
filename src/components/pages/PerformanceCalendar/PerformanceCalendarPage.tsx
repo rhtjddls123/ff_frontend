@@ -86,7 +86,7 @@ const PerformanceCalendarPage = () => {
   }, []);
 
   return (
-    <div className='mx-auto max-w-2xl px-4 py-8'>
+    <div className='mx-auto max-w-5xl px-4 py-8'>
       <CalendarFilter />
 
       <div className='relative'>

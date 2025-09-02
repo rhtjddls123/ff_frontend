@@ -37,7 +37,7 @@ const ProfileJoinedGroups = ({
   return (
     <div className='flex flex-col items-center'>
       <ProfileSummaryBox groupSummary={groupSummary} />
-      <div className='flex w-full flex-col gap-4'>
+      <div className='flex w-full flex-col gap-x-4 gap-y-8 md:grid md:grid-cols-2 lg:grid-cols-3'>
         {groups.map((group) => (
           <ProfileJoinedGroupsCard
             key={group.id}

@@ -59,28 +59,31 @@ const TextareaInput = ({
         rows={rows}
         aria-invalid={!isValidText}
       />
-      <div
-        className={cn(
-          'flex items-center justify-end text-12_M',
-          !isValidText && 'justify-between'
-        )}
-      >
-        {showWarning && !isValidText && (
-          <p className='text-red-500'>부적절한 단어가 포함되어 있습니다</p>
-        )}
-        {showToast && !isValidText && (
-          <Toast
-            message='부적절한 단어가 포함되어 있습니다'
-            onClose={() => {}}
-            className='bottom-1/2'
-          />
-        )}
-        {showLength && (
-          <div className='text-right text-gray-500'>
-            {value.length} / {maxLength}자
-          </div>
-        )}
-      </div>
+      {(showWarning || showLength) && (
+        <div
+          className={cn(
+            'flex items-center justify-end text-12_M',
+            !isValidText && 'justify-between'
+          )}
+        >
+          {showWarning && !isValidText && (
+            <p className='text-red-500'>부적절한 단어가 포함되어 있습니다</p>
+          )}
+
+          {showLength && (
+            <div className='text-right text-gray-500'>
+              {value.length} / {maxLength}자
+            </div>
+          )}
+        </div>
+      )}
+      {showToast && !isValidText && (
+        <Toast
+          message='부적절한 단어가 포함되어 있습니다'
+          onClose={() => {}}
+          className='bottom-1/2'
+        />
+      )}
     </div>
   );
 };

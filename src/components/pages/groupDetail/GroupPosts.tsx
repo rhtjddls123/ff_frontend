@@ -83,24 +83,26 @@ const GroupPosts = () => {
   return (
     <div className='flex w-full flex-col gap-5 px-4 pt-5 pb-4'>
       <PostNotice pinnedPost={pinnedPost} />
-      {posts?.pages
-        .flatMap((page) => page.data?.posts || [])
-        .map((post: Post) => (
-          <PostCard
-            key={post.id}
-            post={post}
-            type='posts'
-          >
-            <CheckButton
+      <div className='flex w-full flex-col gap-5'>
+        {posts?.pages
+          .flatMap((page) => page.data?.posts || [])
+          .map((post: Post) => (
+            <PostCard
+              key={post.id}
               post={post}
-              onClick={handleReaction}
-            />
-            <CommentButton
-              commentCount={post.commentCount}
-              onClick={() => handlePostClick(post)}
-            />
-          </PostCard>
-        ))}
+              type='posts'
+            >
+              <CheckButton
+                post={post}
+                onClick={handleReaction}
+              />
+              <CommentButton
+                commentCount={post.commentCount}
+                onClick={() => handlePostClick(post)}
+              />
+            </PostCard>
+          ))}
+      </div>
       {hasNextPage && (
         <>
           {isFetchingNextPage && <PostsSkeleton />}

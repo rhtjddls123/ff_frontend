@@ -69,7 +69,7 @@ const PerformanceDetailGroupsList = ({
             0개
           </span>
         </span>
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-5 md:grid md:grid-cols-2'>
           <Skeleton className='h-[30vh] w-full rounded-2xl' />
           <Skeleton className='h-[30vh] w-full rounded-2xl' />
         </div>
@@ -94,7 +94,7 @@ const PerformanceDetailGroupsList = ({
           </span>
         </span>
 
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-5 has-[.emptyState]:grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3'>
           {groups && formatPerformanceGroups(groups).length > 0 ? (
             formatPerformanceGroups(groups).map((group) => (
               <div key={group.id}>

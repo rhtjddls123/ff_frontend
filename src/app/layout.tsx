@@ -60,7 +60,7 @@ const RootLayout = ({
   <html lang='ko'>
     <body className='touch-manipulation'>
       <div id='portal' />
-      <div className='mx-auto max-w-lg shadow-xl contain-layout'>
+      <div className='mx-auto shadow-xl contain-layout'>
         <AuthStoreProvider>
           <SseStoreProvider>
             <MSWComponent>

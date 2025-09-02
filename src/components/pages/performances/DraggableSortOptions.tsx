@@ -45,10 +45,10 @@ const DraggableSortOptions = () => {
   });
 
   return (
-    <>
+    <nav className='w-full'>
       <div
         ref={dragScrollRef}
-        className='z-20 scrollbar-hide flex w-full cursor-grab gap-2 overflow-x-auto px-4 py-4 select-none active:cursor-grabbing'
+        className='z-20 mx-auto scrollbar-hide flex w-full max-w-[1200px] cursor-grab gap-2 overflow-x-auto px-4 py-4 select-none active:cursor-grabbing'
       >
         {Object.values(DROPDOWN_OPTIONS).map((option) => (
           <CustomSortDropdown
@@ -62,7 +62,7 @@ const DraggableSortOptions = () => {
         <DatePicker />
         <ToggleIsExpiredButton />
       </div>
-    </>
+    </nav>
   );
 };
 

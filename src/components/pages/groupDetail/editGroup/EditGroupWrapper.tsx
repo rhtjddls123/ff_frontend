@@ -151,8 +151,8 @@ const EditGroupWrapper = () => {
         hasLeftIcon={false}
       />
 
-      <ScrollArea className='h-[calc(100dvh-132px)]'>
-        <div className='mx-auto flex min-h-0 max-w-md flex-1 flex-col gap-7.5 px-4 pt-6 pb-7'>
+      <ScrollArea className='h-[calc(100dvh-132px)] md:h-[calc(100dvh-158px)]'>
+        <div className='mx-auto flex min-h-0 w-screen max-w-[1200px] flex-1 flex-col gap-7.5 px-4 pt-6 pb-7'>
           <div className='flex w-full items-center justify-between gap-7.5'>
             <span className='flex items-center text-left text-14_B leading-[130%] break-keep text-black'>
               공연 이름
@@ -198,7 +198,7 @@ const EditGroupWrapper = () => {
         </div>
       </ScrollArea>
 
-      <div className='sticky right-0 bottom-0 left-0 z-20 flex h-22 justify-between gap-2.5 border-t-1 border-gray-100 bg-white px-4 py-5'>
+      <div className='sticky right-0 bottom-0 left-0 z-20 mx-auto flex h-22 max-w-[1200px] justify-between gap-2.5 border-t-1 border-gray-100 bg-white px-4 py-5'>
         <Button
           variant='secondary'
           color='normal'

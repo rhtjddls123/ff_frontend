@@ -68,7 +68,7 @@ const AgeRangeSlider = <
           valuePosition='none'
           marks={AGE_MARKS}
         />
-        <div className='text-center text-xs text-gray-500'>
+        <div className='text-center text-xs text-gray-500 md:text-sm'>
           {formatAgeRange()}
         </div>
       </div>

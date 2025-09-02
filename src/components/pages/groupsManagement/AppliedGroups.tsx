@@ -97,7 +97,7 @@ const AppliedGroups = () => {
   }
 
   return (
-    <div className='flex flex-col items-center gap-5 px-4'>
+    <div className='flex flex-col items-center gap-5 px-4 md:grid md:grid-cols-2 lg:grid-cols-3'>
       {groups?.map((group) => (
         <AppliedGroup
           key={group.applicationId}

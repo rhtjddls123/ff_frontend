@@ -135,7 +135,7 @@ const StateNotice = ({
   return (
     <div
       style={{ minHeight: height }}
-      className={`flex flex-col items-center justify-center gap-6 text-center ${className}`}
+      className={`emptyState flex flex-col items-center justify-center gap-6 text-center ${className}`}
     >
       <EmptyIcon className='h-20 w-20 text-gray-100' />
       <div className={`text-16_body_M ${finalTextColor}`}>{finalMessage}</div>

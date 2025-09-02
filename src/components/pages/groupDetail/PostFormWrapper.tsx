@@ -79,7 +79,7 @@ const PostFormWrapper = () => {
   };
 
   return (
-    <div className='h-dvh'>
+    <div className='mx-auto h-dvh max-w-[1200px] md:h-[calc(100dvh-70px)]'>
       <DetailHeader
         title='게시글 작성'
         hasRightText='등록'
@@ -87,7 +87,7 @@ const PostFormWrapper = () => {
         rightDisabled={!canSubmit}
       />
 
-      <div className='relative flex flex-col'>
+      <div className='relative flex h-[calc(100%-61.6px)] flex-col'>
         <PinCheckbox
           isPinned={isPinned}
           onClick={handlePinClick}
@@ -107,7 +107,7 @@ const PostFormWrapper = () => {
         />
       </div>
 
-      <div className='fixed right-0 bottom-0 left-0 w-full'>
+      <div className='fixed bottom-0 left-1/2 w-full max-w-[1200px] -translate-x-1/2'>
         <PostImageUploader
           images={uploadedImages}
           onImageUpload={upload}

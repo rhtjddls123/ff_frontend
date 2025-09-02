@@ -103,7 +103,7 @@ const GroupInfoCard = ({
                 </span>
               </button>
             </div>
-            <p className='line-clamp-2 w-full text-14_body_M text-gray-950'>
+            <p className='w-full text-14_body_M text-gray-950'>
               {groupInfo.description}
             </p>
           </div>

@@ -94,8 +94,8 @@ const PostDetailWrapper = () => {
         onLeftClick={() => router.back()}
       />
 
-      <ScrollArea className='h-[calc(100dvh-120px)]'>
-        <div className='flex w-full flex-col px-4 pb-[89px]'>
+      <ScrollArea className='h-[calc(100dvh-44px)] md:h-[calc(100dvh-70px)]'>
+        <div className='mx-auto flex w-full max-w-[1200px] flex-col px-4 pb-[89px]'>
           <PostCard
             post={post}
             type='detail'
@@ -120,14 +120,13 @@ const PostDetailWrapper = () => {
             </>
           )}
         </div>
+        <MessageInput
+          type='comment'
+          sendMessage={handleSubmit}
+          maxLength={150}
+          className='fixed bottom-0 left-1/2 max-w-[1200px] -translate-x-1/2'
+        />
       </ScrollArea>
-
-      <MessageInput
-        type='comment'
-        sendMessage={handleSubmit}
-        maxLength={150}
-        className='sticky right-0 bottom-0 left-0'
-      />
     </>
   );
 };

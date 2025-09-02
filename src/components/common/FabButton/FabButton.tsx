@@ -52,7 +52,7 @@ const FabButton: React.FC<FabButtonProps> = ({
   };
 
   return (
-    <div className='fixed right-[13px] bottom-24 z-40'>
+    <div className='fixed right-[13px] bottom-24 z-40 md:bottom-8'>
       {isScrolled && (
         <div className='mb-1.5 flex flex-col items-end space-y-2'>
           <Button

@@ -52,7 +52,7 @@ const PerformanceWrapper = ({
                   return data.data?.map((performance, idx) => (
                     <CarouselItem
                       key={performance.id}
-                      className='basis-[150px] p-0'
+                      className='basis-[150px] p-0 md:basis-1/5'
                     >
                       <PerformanceCard
                         ranking={idx + 1}

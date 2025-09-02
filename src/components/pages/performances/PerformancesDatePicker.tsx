@@ -3,8 +3,12 @@ import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { format, parse, isValid } from 'date-fns';
 import { ko } from 'date-fns/locale';
 import { Calendar } from '@/components/common';
-import Portal from '@/components/common/Portal';
 import { AltArrowUpIcon, DeleteIcon } from '@/components/icons';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 import { useClickOutside, useQueryParam } from '@/hooks/';
 import { cn } from '@/lib/utils';
 import { DateRange } from '@/types/dateRange';
@@ -51,6 +55,7 @@ const PerformanceDatePicker = ({
   const datePickerRef = useRef<HTMLDivElement>(null);
   const dropdownPortalRef = useRef<HTMLDivElement>(null);
   const buttonWrapperRef = useRef<HTMLDivElement>(null);
+  const popoverRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [dateRange, setDateRange] = useState<DateRange>({
     startDate: null,
@@ -202,30 +207,27 @@ const PerformanceDatePicker = ({
       className={cn('relative inline-block', className)}
     >
       <TriggerButton />
-
-      {isOpen && (
-        <Portal>
-          <div
-            ref={dropdownPortalRef}
-            className='fixed right-2 left-2 z-[9999] mx-auto flex max-w-[31rem] flex-col gap-5 overflow-hidden rounded-[12px] border border-gray-50 bg-white p-5 shadow-lg'
-            style={{
-              top: datePickerRef.current
-                ? datePickerRef.current.getBoundingClientRect().bottom
-                  + window.scrollY
-                  + 8
-                : 0,
-            }}
-          >
-            <Calendar
-              startDate={dateRange.startDate}
-              endDate={dateRange.endDate}
-              onDateClick={handleDateClick}
-              isControllable={true}
-              className='flex flex-col gap-1'
-            />
-          </div>
-        </Portal>
-      )}
+      <Popover
+        open={isOpen}
+        onOpenChange={setIsOpen}
+      >
+        <PopoverTrigger
+          ref={popoverRef}
+          className='absolute h-[46px]'
+        />
+        <PopoverContent
+          onClick={(e) => e.stopPropagation()}
+          className='w-[calc(100vw-2rem)] max-w-[calc(32rem-2rem)] rounded-[12px] border-1 border-gray-50 bg-white p-5 shadow-lg'
+        >
+          <Calendar
+            startDate={dateRange.startDate}
+            endDate={dateRange.endDate}
+            onDateClick={handleDateClick}
+            isControllable={true}
+            className='flex flex-col gap-1'
+          />
+        </PopoverContent>
+      </Popover>
     </div>
   );
 };

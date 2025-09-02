@@ -19,8 +19,8 @@ const PerformanceDetailInfo = ({
   isPending,
   performanceDetail,
 }: PerformanceDetailInfoProps) => {
-  const imageWidth = 500;
-  const imageHeight = 700;
+  const imageWidth = 1000;
+  const imageHeight = 1400;
 
   const performanceInfoList: InfoItem[] = useMemo(() => {
     if (!performanceDetail) return [];
