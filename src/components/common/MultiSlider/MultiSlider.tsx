@@ -180,7 +180,7 @@ const MultiSlider = ({
             {Object.entries(marks).map(([key, label]) => (
               <span
                 key={key}
-                className='flex flex-col items-center text-center whitespace-nowrap'
+                className='flex flex-col items-center text-center whitespace-nowrap md:text-xs'
               >
                 <span className='whitespace-nowrap'>{label}</span>
               </span>

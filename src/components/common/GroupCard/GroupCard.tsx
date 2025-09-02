@@ -137,7 +137,7 @@ const GroupCard = ({
               {groupData.host.rating})
             </span>
           </div>
-          <p className='line-clamp-2 w-full text-14_body_M break-all text-gray-950'>
+          <p className='line-clamp-2 w-full truncate text-14_body_M break-all text-gray-950'>
             {groupData.description}
           </p>
         </div>

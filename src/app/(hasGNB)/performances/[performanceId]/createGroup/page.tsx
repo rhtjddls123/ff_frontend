@@ -79,8 +79,8 @@ const CreateGroupPage = () => {
   return (
     <>
       <Header title='모임 개설' />
-      <ScrollArea className='h-[calc(100dvh-132px)]'>
-        <div className='mx-auto max-w-md'>
+      <ScrollArea className='h-[calc(100dvh-132px)] md:h-[calc(100dvh-158px)]'>
+        <div className='mx-auto w-screen max-w-[1200px]'>
           <h1 className='sr-only'>모임 개설</h1>
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -222,7 +222,7 @@ const CreateGroupPage = () => {
         </div>
       </ScrollArea>
 
-      <div className='sticky right-0 bottom-0 left-0 z-20 h-22 border-t-1 border-gray-100 bg-white px-4 py-5'>
+      <div className='sticky right-0 bottom-0 left-0 z-20 mx-auto h-22 max-w-[1200px] border-t-1 border-gray-100 bg-white px-4 py-5'>
         <FormActions
           onSubmit={handleSubmit(onSubmit)}
           onReset={onReset}
