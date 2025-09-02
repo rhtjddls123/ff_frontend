@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next';
 import { Metadata } from 'next';
 import TabBar from '@/components/common/TabBar/TabBar';
 import NotificationToast from '@/components/pages/NotificationToast';
@@ -72,6 +73,7 @@ const RootLayout = ({
           </SseStoreProvider>
         </AuthStoreProvider>
       </div>
+      <Analytics />
     </body>
   </html>
 );
