@@ -6,7 +6,9 @@ interface TabContentWrapperProps {
 }
 
 const ProfileWrapper = ({ children, className }: TabContentWrapperProps) => (
-  <div className={cn('mx-auto w-full max-w-2xl px-[14px] py-2', className)}>
+  <div
+    className={cn('mx-auto w-full max-w-[1200px] px-[14px] py-2', className)}
+  >
     {children}
   </div>
 );

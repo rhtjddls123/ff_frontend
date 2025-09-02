@@ -57,6 +57,7 @@ const MyPageMain = () => {
             onEditClick={() => {
               router.push('/profiles/me/edit');
             }}
+            me
           />
         </div>
 
@@ -71,7 +72,7 @@ const MyPageMain = () => {
       <main className='flex justify-center gap-4 p-4'>
         <div className='flex w-60 flex-col items-center gap-4 p-4'>
           <Link
-            href={`/profiles/${profile.id}`}
+            href={`/profiles/me`}
             className='shrink-0'
           >
             <Avatar className='size-16'>
@@ -86,7 +87,7 @@ const MyPageMain = () => {
           <div className='flex flex-col items-center gap-3'>
             <div className='flex items-end gap-1'>
               <Link
-                href={`/profiles/${profile.id}`}
+                href={`/profiles/me`}
                 className='h-[19.2px]'
               >
                 <span className='text-16_B text-gray-950 hover:underline'>
