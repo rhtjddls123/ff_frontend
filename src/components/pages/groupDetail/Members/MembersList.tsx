@@ -37,13 +37,13 @@ const MembersList = ({
         className='w-full'
       >
         <CarouselContent>
-          <CarouselItem className='basis-[calc(100%/2.4)] rounded-[16px]'>
+          <CarouselItem className='max-w-[200px] basis-[calc(100%/2.4)] rounded-[16px]'>
             <Skeleton className='h-30 w-full' />
           </CarouselItem>
-          <CarouselItem className='basis-[calc(100%/2.4)] rounded-[16px]'>
+          <CarouselItem className='max-w-[200px] basis-[calc(100%/2.4)] rounded-[16px]'>
             <Skeleton className='h-30 w-full' />
           </CarouselItem>
-          <CarouselItem className='basis-[calc(100%/2.4)] rounded-[16px]'>
+          <CarouselItem className='max-w-[200px] basis-[calc(100%/2.4)] rounded-[16px]'>
             <Skeleton className='h-30 w-full' />
           </CarouselItem>
         </CarouselContent>
@@ -76,7 +76,7 @@ const MembersList = ({
         {members?.map((member) => (
           <CarouselItem
             key={member.memberId}
-            className='flex basis-[calc(100%/2.4)] flex-col items-center justify-center gap-3.5 rounded-[16px] border-1 border-gray-100 bg-white p-5'
+            className='flex max-w-[200px] basis-[calc(100%/2.4)] flex-col items-center justify-center gap-3.5 rounded-[16px] border-1 border-gray-100 bg-white p-5'
           >
             <div className='flex items-center justify-center gap-2.5'>
               <Link href={`/profiles/${member.memberId}`}>

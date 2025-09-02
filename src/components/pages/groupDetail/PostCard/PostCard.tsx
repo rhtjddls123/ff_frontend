@@ -172,7 +172,7 @@ const PostCard = ({ post, type = 'posts', children }: PostCardProps) => {
                 data-testid='carousel'
                 className='relative mx-auto w-full'
               >
-                <CarouselContent className='flex items-center'>
+                <CarouselContent className='flex max-w-28 items-center'>
                   {Array.from(images ?? [], (img) => (
                     <CarouselItem key={img.id}>
                       <Image
@@ -190,7 +190,7 @@ const PostCard = ({ post, type = 'posts', children }: PostCardProps) => {
                 <CarouselNext className='right-0.5' />
               </Carousel>
             ) : (
-              <div className='flex w-full flex-col gap-2.5'>
+              <div className='flex w-full max-w-28 flex-col gap-2.5'>
                 {Array.from(images ?? [], (img) => (
                   <Image
                     key={img.id}

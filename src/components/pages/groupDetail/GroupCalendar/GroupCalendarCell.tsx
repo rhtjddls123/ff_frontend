@@ -85,7 +85,7 @@ const GroupCalendarCell = ({
                   onScheduleClick?.(schedule);
                 }}
                 className={cn(
-                  'block w-full max-w-[60px] truncate rounded px-1 py-[2px] text-center !text-12_M',
+                  'block w-full truncate rounded px-1 py-[2px] text-center !text-12_M',
                   color.bgClass,
                   color.textClass
                 )}
