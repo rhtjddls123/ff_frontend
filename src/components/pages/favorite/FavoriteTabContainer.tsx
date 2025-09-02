@@ -61,7 +61,7 @@ const FavoriteTabContainer: React.FC = () => {
             )}
             fallback={<SpinnerWrapper />}
             isFetchingFallback={<SpinnerWrapper />}
-            className='mx-auto flex flex-col gap-4'
+            className='mx-auto flex flex-col gap-4 has-[.emptyState]:grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3'
             emptyFallback={<StateNotice preset='likedPerformancesEmpty' />}
           />
         )}
@@ -75,7 +75,7 @@ const FavoriteTabContainer: React.FC = () => {
             renderData={(user) => <FavoriteUserCard {...user} />}
             fallback={<SpinnerWrapper />}
             isFetchingFallback={<SpinnerWrapper />}
-            className='flex flex-col gap-5'
+            className='flex flex-col gap-5 has-[.emptyState]:grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3'
             emptyFallback={<StateNotice preset='likedUsersEmpty' />}
           />
         )}
